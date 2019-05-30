@@ -304,45 +304,44 @@ class Board {
 let board = new Board();
 board.newGame();
 
-$(document).keydown(e => {
-    switch (e.which) {
+$(document).keydown(function(e) {
+    switch(e.which) {
         case 37: // left
-            board.swipe("LEFT");
-            break;
+        board.swipe("LEFT");
+        break;
 
         case 38: // up
-            board.swipe("UP");
-            break;
+        board.swipe("UP");
+        break;
 
         case 39: // right
-            board.swipe("RIGHT");
-            break;
+        board.swipe("RIGHT");
+        break;
 
         case 40: // down
-            board.swipe("DOWN");
-            break;
+        board.swipe("DOWN");
+        break;
 
-        default:
-            return; // exit this handler for other keys
+        default: return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
-$(document).on('swipeleft', e => {
-    board.swipe("LEFT");
-    e.preventDefault();
+$(document).on('swipeleft',function(e,data){
+  board.swipe("LEFT");
+  e.preventDefault();
 });
-$(document).on('swiperight', e => {
-    board.swipe("RIGHT");
-    e.preventDefault();
+$(document).on('swiperight',function(e,data){
+  board.swipe("RIGHT");
+  e.preventDefault();
 });
-$(document).on('swipeup', e => {
-    board.swipe("UP");
-    e.preventDefault();
+$(document).on('swipeup',function(e,data){
+  board.swipe("UP");
+  e.preventDefault();
 });
-$(document).on('swipedown', e => {
-    board.swipe("DOWN");
-    e.preventDefault();
+$(document).on('swipedown',function(e,data){
+  board.swipe("DOWN");
+  e.preventDefault();
 });
 
 $('#restart').click(() => {
