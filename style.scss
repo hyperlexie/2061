@@ -1,0 +1,195 @@
+// IMPORTANT - The column values (columns, $columns, COLUMNS) and the row values (rows, $rows, ROWS)
+//     MUST be the same between the HTML (index.pug), CSS (style.scss) and JavaScript (index.js) files
+//     The square-edge values ($square-edge, SQUARE_EDGE) and the border-size values ($border-size, BORDER_SIZE)
+//     MUST be the same between the CSS (style.scss) and JavaScript (index.js) files
+
+$columns: 5;
+$rows:    7;
+$square-edge: 40px;
+$border-size:  5px;
+
+$font-size-large:    30px; //45px;  // for tiles 2, 4, 8, 16, 32, 64
+$font-size-medium:   20px; //35px;  // for tiles 128, 256, 512
+$font-size-small:    15px; //25px;  // for tiles 1024, 2048
+$font-size-smallest: 14px; //20px;  // for tiles 4096 and larger
+
+body {
+  background-color: #faf8ef;
+}
+
+.header {
+  margin: 0 auto;
+  width: 350px;
+  color: #776e65;
+}
+
+.scores-container {
+  float: right;
+  text-align: right;
+}
+
+.score-container {
+  position: relative;
+  display: inline-block;
+  background: #bbada0;
+  padding: 15px 25px;
+  font-size: 25px;
+  height: 25px;
+  line-height: 47px;
+  font-weight: bold;
+  border-radius: 3px;
+  color: white;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.score-container:after {
+  content: "Score";
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #eee4da;
+}
+
+.logo {
+  font-size: 65px;
+  font-weight: bold;
+}
+
+.sub-header {
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 45px;
+  height: 45px;
+}
+
+/* This is the background board that all the tiles are displayed on */
+#board {
+  position:relative;
+  margin: $border-size auto;
+  width: $border-size * ($columns + 1) + $square-edge * $columns;
+  height: $border-size * ($rows + 1) + $square-edge * $rows;
+  background-color: #bbada0;
+  border-radius:3px;
+}
+
+#restart {
+  font-size: 12px;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  float: right;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.blanks {
+  position:absolute;
+  display:inline-block;
+  z-index:0;
+  background-color: #ccc0b2;
+  width: $square-edge;
+  height: $square-edge;
+  margin-top: $border-size;
+  margin-left: $border-size;
+  border-radius:3px;
+}
+
+.tiles {
+  position:absolute;
+  display:inline-block;
+  background-color: #eee4da;
+  width: $square-edge;
+  height: $square-edge;
+  line-height: $square-edge;
+  margin-top: $border-size;
+  margin-left: $border-size;
+  text-align: center;
+  font-weight: bold;
+  z-index: 10;
+  font-size: $font-size-large;
+  color: #776e65;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  border-radius:3px;
+}
+
+#board .tile-1 {
+  background: #ffffffff;
+}
+
+#board .tile-2 {
+  background: #63aeee;
+}
+
+#board .tile-4 {
+  background: #97edd7;
+}
+
+#board .tile-8 {
+  color: #f9f6f2;
+  background: #64f281;
+}
+
+#board .tile-16 {
+  color: #f9f6f2;
+  background: #c9ed4c;
+}
+
+#board .tile-32 {
+  color: #f9f6f2;
+  background: #f6f112;
+}
+
+#board .tile-64 {
+  color: #f9f6f2;
+  background: #f6ca63;
+
+}
+
+#board .tile-128 {
+  color: #f9f6f2;
+  background: #eda52e;
+  font-size: $font-size-medium;
+}
+
+#board .tile-256 {
+  color: #f9f6f2;
+  background: #f99244;
+  font-size: $font-size-medium;
+}
+
+#board .tile-512 {
+  color: #f9f6f2;
+  background: #f54f2d;
+  font-size: $font-size-medium;
+}
+
+#board .tile-1024 {
+  color: #f9f6f2;
+  background: #9746ed;
+  font-size: $font-size-small;
+}
+
+#board .tile-2048 {
+  color: #f9f6f2;
+  background: #edc22e;
+  font-size: $font-size-small;
+}
+
+#board .tile-super {
+  color: #f9f6f2;
+  background: #f139ec;
+  font-size: $font-size-smallest;
+}
