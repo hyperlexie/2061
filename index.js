@@ -311,6 +311,7 @@ $(document).keydown(function(e) {
         break;
 
         case 38: // up
+        console.log("up arrow");
         board.swipe("UP");
         break;
 
@@ -336,6 +337,7 @@ $(document).on('swiperight',function(e,data){
   e.preventDefault();
 });
 $(document).on('swipeup',function(e,data){
+  console.log("swipeup");
   board.swipe("UP");
   e.preventDefault();
 });
