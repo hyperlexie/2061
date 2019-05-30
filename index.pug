@@ -1,0 +1,37 @@
+// IMPORTANT - The column values (columns, $columns, COLUMNS) and the row values (rows, $rows, ROWS)
+//     MUST be the same between the HTML (index.pug), CSS (style.scss) and JavaScript (index.js) files
+
+- var columns = 5;
+- var rows    = 7;
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title= 2061
+        link(rel='stylesheet', href='style.css')
+    body
+        div(class='page')
+            div(class="header")
+                div
+                    span(class="logo") 2061
+                    div(class='scores-container')
+                        div(class='score-container' id="score") 0
+                div(class="sub-header")
+                    span Join the numbers and get to the
+                        b  2061
+                        |  tile!
+                    button(id='restart') New Game
+            div(id='board')
+                - var column = 0
+                while column < columns
+                    - var row = 0;
+                    while row < rows
+                        span(class='blanks')
+                        |
+                        |
+                        - row++
+                    - column++
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+script(src='index.js')
