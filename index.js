@@ -102,7 +102,7 @@ class Board {
     // This function draws the blank squares
     init() {
         $('.blanks').each((index, ele) => {
-            const y = parseInt(index / COLUMNS);   // TODO fix this
+            const y = Math.trunc(index / COLUMNS);
             const x = index % COLUMNS;
             $(ele).css({
                 top:  (y * (SQUARE_EDGE + BORDER_SIZE)) + 'px',
@@ -236,6 +236,7 @@ class Board {
 
     // 2048 tiles can merge with tiles other than 2048 as long as they don't add up to > 2061
     static merge_tiles_for_2061(filledTile, tile) {
+        // noinspection RedundantIfStatementJS
         if ((filledTile.getValue() >= 2048 || tile.getValue() >= 2048) &&
             // if ((filledTile.getValue() >= 2048 ) &&      // merges when it should, but also when it shouldn't
             // if ((tile.getValue() >= 2048) &&             // never merges when it shouldn't, but sometimes doesn't merge
@@ -304,46 +305,47 @@ class Board {
 let board = new Board();
 board.newGame();
 
-$(document).keydown(function(e) {
-    switch(e.which) {
+// TODO fix deprecated JavaScript symbols
+
+$(document).keydown(e => {
+    switch (e.which) {
         case 37: // left
-        board.swipe("LEFT");
-        break;
+            board.swipe("LEFT");
+            break;
 
         case 38: // up
-        console.log("up arrow");
-        board.swipe("UP");
-        break;
+            board.swipe("UP");
+            break;
 
         case 39: // right
-        board.swipe("RIGHT");
-        break;
+            board.swipe("RIGHT");
+            break;
 
         case 40: // down
-        board.swipe("DOWN");
-        break;
+            board.swipe("DOWN");
+            break;
 
-        default: return; // exit this handler for other keys
+        default:
+            return; // exit this handler for other keys
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
 });
 
-$(document).on('swipeleft',function(e,data){
-  board.swipe("LEFT");
-  e.preventDefault();
+$(document).on('swipeleft', e => {
+    board.swipe("LEFT");
+    e.preventDefault();
 });
-$(document).on('swiperight',function(e,data){
-  board.swipe("RIGHT");
-  e.preventDefault();
+$(document).on('swiperight', e => {
+    board.swipe("RIGHT");
+    e.preventDefault();
 });
-$(document).on('swipeup',function(e,data){
-  console.log("swipeup");
-  board.swipe("UP");
-  e.preventDefault();
+$(document).on('swipeup', e => {
+    board.swipe("UP");
+    e.preventDefault();
 });
-$(document).on('swipedown',function(e,data){
-  board.swipe("DOWN");
-  e.preventDefault();
+$(document).on('swipedown', e => {
+    board.swipe("DOWN");
+    e.preventDefault();
 });
 
 $('#restart').click(() => {
